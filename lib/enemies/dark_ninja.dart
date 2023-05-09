@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,8 @@ import 'package:tfg_flutter_game/constants/globals.dart';
 import 'package:tfg_flutter_game/constants/animation_config.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:tfg_flutter_game/constants/collision_config.dart';
+
+import '../decorations/medipack.dart';
 class DarkNinjaEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, ObjectCollision {
 
   // TODO: Ataque de los enemigos OWO
@@ -39,6 +43,12 @@ class DarkNinjaEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLif
     gameRef.camera.shake(intensity: 4);
     removeFromParent();
     super.die();
+
+    bool drop = Random().nextBool();
+
+    if(drop){
+      gameRef.add(Medipack(position:position));
+    }
   }
 
   @override
