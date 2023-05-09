@@ -1,11 +1,14 @@
 import 'package:bonfire/bonfire.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:tfg_flutter_game/constants/animation_config.dart';
 import 'package:tfg_flutter_game/constants/globals.dart';
-
+import 'package:flame_audio/flame_audio.dart';
+import '../constants/collision_config.dart';
 import '../enums/attack_type.dart';
+import 'package:flutter/material.dart';
 
-class GreenNinjaPlayer extends SimplePlayer {
+class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife {
 
   final double _damage = 10;
 
@@ -17,8 +20,34 @@ class GreenNinjaPlayer extends SimplePlayer {
       speed: 220,
       life: 100,
       initDirection: Direction.down,
-      animation: AnimationConfig.greenNinjaAnimation(spriteSheet: spriteSheet));
+      animation: AnimationConfig.greenNinjaAnimation(spriteSheet: spriteSheet),
 
+  ){
+    setupBarLife(showLifeText: false, borderRadius: BorderRadius.circular(2), borderWidth: 2);
+    setupCollision(
+      CollisionConfigs.playerCollisionConfig(),
+    );
+  }
+
+  @override
+  void receiveDamage(AttackFromEnum attacker, double damage, identify){
+
+    if(attacker == AttackFromEnum.ENEMY){
+      FlameAudio.play(Globals.explosionSound);
+      showDamage(damage, config:TextStyle(fontSize: width/3, color: Colors.red));
+    }
+    super.receiveDamage(attacker, damage, identify);
+  }
+
+  @override
+  void die(){
+    
+    FlameAudio.play(Globals.gameOverSound);
+    gameRef.camera.shake(intensity: 4);
+    removeFromParent();
+    super.die();
+  }
+  
   @override
   void joystickAction(JoystickActionEvent event) {
 
@@ -39,10 +68,10 @@ class GreenNinjaPlayer extends SimplePlayer {
         if(gameRef.player != null && gameRef.player?.isDead == true) return;
         simpleAttackRange(
             damage: _damage,
-            animationRight: AnimationConfig.shurikenAnimation(),
-            animationLeft: AnimationConfig.shurikenAnimation(),
-            animationUp: AnimationConfig.shurikenAnimation(),
-            animationDown: AnimationConfig.shurikenAnimation(),
+            animationRight: AnimationConfig.shurikenMagicAnimation(),
+            animationLeft: AnimationConfig.shurikenMagicAnimation(),
+            animationUp: AnimationConfig.shurikenMagicAnimation(),
+            animationDown: AnimationConfig.shurikenMagicAnimation(),
             size: size);
       }
     }
