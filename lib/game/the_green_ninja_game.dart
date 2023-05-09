@@ -2,7 +2,9 @@ import 'package:bonfire/bonfire.dart';
 import 'package:flutter/services.dart';
 import 'package:tfg_flutter_game/constants/globals.dart';
 import 'package:flutter/material.dart';
+import 'package:tfg_flutter_game/enemies/blue_ninja.dart';
 import 'package:tfg_flutter_game/enemies/dark_ninja.dart';
+import 'package:tfg_flutter_game/enemies/demon_enemy.dart';
 import 'package:tfg_flutter_game/enums/attack_type.dart';
 import 'package:tfg_flutter_game/sprite_sheets/old_man_sprite_sheet.dart';
 import 'package:tfg_flutter_game/sprite_sheets/sprite_sheets.dart';
@@ -54,7 +56,9 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
             forceTileSize: Vector2(32, 32),
             objectsBuilder: {
               'old_man': (properties) => OldManNpc(position: properties.position, spriteSheet: OldManSpriteSheet.spriteSheet),
-              'dark_ninja': (properties) => DarkNinjaEnemy(position: properties.position, spriteSheet: DarkNinjaSpriteSheet.spriteSheet)
+              'dark_ninja': (properties) => DarkNinjaEnemy(position: properties.position, spriteSheet: DarkNinjaSpriteSheet.spriteSheet),
+              'demon': (properties) => DemonEnemy(position: properties.position),
+              'blue_ninja':(properties) => BlueNinjaEnemy(position: properties.position ,spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
             },
         )
     );

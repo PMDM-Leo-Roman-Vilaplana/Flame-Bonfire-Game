@@ -9,53 +9,53 @@ import '../enums/attack_type.dart';
 import 'package:flutter/material.dart';
 
 class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife {
-
   final double _damage = 10;
 
   GreenNinjaPlayer(
       {required Vector2 position, required SpriteSheet spriteSheet})
-      : super (
-      position: position,
-      size: Vector2(Globals.playerSize, Globals.playerSize),
-      speed: 220,
-      life: 100,
-      initDirection: Direction.down,
-      animation: AnimationConfig.greenNinjaAnimation(spriteSheet: spriteSheet),
-
-  ){
-    setupBarLife(showLifeText: false, borderRadius: BorderRadius.circular(2), borderWidth: 2);
+      : super(
+          position: position,
+          size: Vector2(Globals.playerSize, Globals.playerSize),
+          speed: 220,
+          life: 100,
+          initDirection: Direction.down,
+          animation:
+              AnimationConfig.greenNinjaAnimation(spriteSheet: spriteSheet),
+        ) {
+    setupBarLife(
+        showLifeText: false,
+        borderRadius: BorderRadius.circular(2),
+        borderWidth: 2);
     setupCollision(
       CollisionConfigs.playerCollisionConfig(),
     );
   }
 
   @override
-  void receiveDamage(AttackFromEnum attacker, double damage, identify){
-
-    if(attacker == AttackFromEnum.ENEMY){
+  void receiveDamage(AttackFromEnum attacker, double damage, identify) {
+    if (attacker == AttackFromEnum.ENEMY) {
       FlameAudio.play(Globals.explosionSound);
-      showDamage(damage, config:TextStyle(fontSize: width/3, color: Colors.red));
+      showDamage(damage,
+          config: TextStyle(fontSize: width / 3, color: Colors.red));
     }
     super.receiveDamage(attacker, damage, identify);
   }
 
   @override
-  void die(){
-    
+  void die() {
     FlameAudio.play(Globals.gameOverSound);
     gameRef.camera.shake(intensity: 4);
     removeFromParent();
     super.die();
   }
-  
+
   @override
   void joystickAction(JoystickActionEvent event) {
-
-    if(event.event == ActionEvent.DOWN){
-
-      if(event.id == AttackType.melee || event.id == LogicalKeyboardKey.space.keyId){
+    if (event.event == ActionEvent.DOWN) {
+      if (event.id == AttackType.melee ||
+          event.id == LogicalKeyboardKey.space.keyId) {
         // Ataque cuerpo a cuerpo - si estas muerto no haces accion
-        if(gameRef.player != null && gameRef.player?.isDead == true) return;
+        if (gameRef.player != null && gameRef.player?.isDead == true) return;
         simpleAttackMelee(
             withPush: false,
             damage: _damage * 2,
@@ -63,16 +63,19 @@ class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife {
             animationRight: AnimationConfig.cutAnimation());
       }
 
-      if(event.id == AttackType.range || event.id == LogicalKeyboardKey.controlLeft.keyId){
+      if (event.id == AttackType.range ||
+          event.id == LogicalKeyboardKey.controlLeft.keyId) {
         // Ataque cuerpo a distancia - si estas muerto no hace ninguna accion
-        if(gameRef.player != null && gameRef.player?.isDead == true) return;
+        if (gameRef.player != null && gameRef.player?.isDead == true) return;
         simpleAttackRange(
-            damage: _damage,
-            animationRight: AnimationConfig.shurikenMagicAnimation(),
-            animationLeft: AnimationConfig.shurikenMagicAnimation(),
-            animationUp: AnimationConfig.shurikenMagicAnimation(),
-            animationDown: AnimationConfig.shurikenMagicAnimation(),
-            size: size);
+          damage: _damage,
+          animationRight: AnimationConfig.shurikenMagicAnimation(),
+          animationLeft: AnimationConfig.shurikenMagicAnimation(),
+          animationUp: AnimationConfig.shurikenMagicAnimation(),
+          animationDown: AnimationConfig.shurikenMagicAnimation(),
+          size: size,
+          collision: CollisionConfigs.projectileCollisionConfig(width: width),
+        );
       }
     }
 
