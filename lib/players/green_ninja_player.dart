@@ -8,7 +8,7 @@ import '../constants/collision_config.dart';
 import '../enums/attack_type.dart';
 import 'package:flutter/material.dart';
 
-class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife {
+class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife, Lighting {
   final double _damage = 10;
 
   GreenNinjaPlayer(
@@ -26,6 +26,13 @@ class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife {
         showLifeText: false,
         borderRadius: BorderRadius.circular(2),
         borderWidth: 2);
+
+    setupLighting(LightingConfig(
+      radius: width * 2,
+      blurBorder: width * 2,
+      color: Colors.yellow.withOpacity(0.1),
+    ),);
+
     setupCollision(
       CollisionConfigs.playerCollisionConfig(),
     );

@@ -10,6 +10,7 @@ import 'package:tfg_flutter_game/sprite_sheets/old_man_sprite_sheet.dart';
 import 'package:tfg_flutter_game/sprite_sheets/sprite_sheets.dart';
 
 import '../NPC/old_man_npc.dart';
+import '../decorations/fire.dart';
 import '../players/green_ninja_player.dart';
 import '../sprite_sheets/green_ninja_sprite_sheet.dart';
 
@@ -24,6 +25,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
   @override
   Widget build(BuildContext context) {
     return BonfireWidget(
+      lightingColorGame: Colors.black.withOpacity(0.5),
       // si no tenemos un objeto jugador el joystick moverá el mapa
         player: GreenNinjaPlayer(
             position: Vector2(40, 40),
@@ -59,6 +61,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
               'dark_ninja': (properties) => DarkNinjaEnemy(position: properties.position, spriteSheet: DarkNinjaSpriteSheet.spriteSheet),
               'demon': (properties) => DemonEnemy(position: properties.position),
               'blue_ninja':(properties) => BlueNinjaEnemy(position: properties.position ,spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
+              'fire':(properties)=>Fire(position:properties.position),
             },
         )
     );

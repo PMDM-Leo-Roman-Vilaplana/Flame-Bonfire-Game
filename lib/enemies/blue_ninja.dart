@@ -5,6 +5,8 @@ import 'package:tfg_flutter_game/constants/globals.dart';
 import 'package:tfg_flutter_game/constants/animation_config.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:tfg_flutter_game/constants/collision_config.dart';
+
+import '../decorations/coin.dart';
 class BlueNinjaEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, ObjectCollision {
 
   // TODO: Ataque de los enemigos OWO
@@ -38,6 +40,7 @@ class BlueNinjaEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLif
   void die(){
     gameRef.camera.shake(intensity: 4);
     removeFromParent();
+    gameRef.add(Coin(position:position));
     super.die();
   }
 
