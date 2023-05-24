@@ -8,6 +8,8 @@ import '../constants/collision_config.dart';
 import '../enums/attack_type.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/game_over_screen.dart';
+
 class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife, Lighting {
   final double _damage = 10;
 
@@ -54,6 +56,8 @@ class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, UseBarLife, Li
     gameRef.camera.shake(intensity: 4);
     removeFromParent();
     super.die();
+    gameRef.pauseEngine();
+    gameRef.overlayManager.add(GameOverScreen.id);
   }
 
   @override

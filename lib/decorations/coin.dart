@@ -4,6 +4,7 @@ import 'package:flame_audio/flame_audio.dart';
 import '../constants/animation_config.dart';
 import '../constants/globals.dart';
 import '../players/green_ninja_player.dart';
+import '../screens/victory_screen.dart';
 
 class Coin extends GameDecoration with Sensor<GreenNinjaPlayer>{
 
@@ -17,5 +18,7 @@ class Coin extends GameDecoration with Sensor<GreenNinjaPlayer>{
 
     FlameAudio.play(Globals.successSound);
     removeFromParent();
+    gameRef.pauseEngine();
+    gameRef.overlayManager.add(GameWonScreen.id);
   }
 }
