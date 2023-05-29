@@ -11,6 +11,7 @@ import 'package:tfg_flutter_game/screens/game_over_screen.dart';
 import 'package:tfg_flutter_game/sprite_sheets/old_man_sprite_sheet.dart';
 import 'package:tfg_flutter_game/sprite_sheets/sprite_sheets.dart';
 
+import '../NPC/inmate.dart';
 import '../NPC/old_man_npc.dart';
 import '../decorations/fire.dart';
 import '../players/green_ninja_player.dart';
@@ -47,8 +48,6 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
   @override
   Widget build(BuildContext context) {
     switch(currentMapId){
-
-
       default:
         return BonfireWidget(
             key: Key(DateTime.now().toIso8601String()),
@@ -66,7 +65,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
             lightingColorGame: Colors.black.withOpacity(0.5),
             // si no tenemos un objeto jugador el joystick moverá el mapa
             player: GreenNinjaPlayer(
-                position: Vector2(40, 40),
+                position: Vector2(80, 120),
                 spriteSheet: GreenNinjaSpriteSheet.spriteSheet),
             joystick: Joystick(
                 directional: JoystickDirectional(),
@@ -92,7 +91,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
                   )
                 ]
             ),
-            map: WorldMapByTiled(Globals.mapOne,
+            map: WorldMapByTiled(Globals.dungeon,
               forceTileSize: Vector2(32, 32),
               objectsBuilder: {
                 'old_man': (properties) => OldManNpc(position: properties.position, spriteSheet: OldManSpriteSheet.spriteSheet),
@@ -100,6 +99,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
                 'demon': (properties) => DemonEnemy(position: properties.position),
                 'blue_ninja':(properties) => BlueNinjaEnemy(position: properties.position ,spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
                 'fire':(properties)=>Fire(position:properties.position),
+                //'inmate':(properties) => Inmate(position:properties.position),
               },
             )
         );

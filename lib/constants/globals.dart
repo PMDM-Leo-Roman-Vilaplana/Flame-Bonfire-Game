@@ -54,4 +54,5 @@ class Globals {
 
   // Mapas
   static const String mapOne = 'map_one.json';
+  static const String dungeon = 'dungeon.json';
 }
