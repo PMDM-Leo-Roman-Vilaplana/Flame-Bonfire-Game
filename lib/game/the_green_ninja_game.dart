@@ -14,6 +14,8 @@ import 'package:tfg_flutter_game/sprite_sheets/sprite_sheets.dart';
 import '../NPC/inmate.dart';
 import '../NPC/old_man_npc.dart';
 import '../decorations/fire.dart';
+import '../hitboxes/void.dart';
+import '../interface/NinjaInterface.dart';
 import '../players/green_ninja_player.dart';
 import '../screens/victory_screen.dart';
 import '../sprite_sheets/green_ninja_sprite_sheet.dart';
@@ -61,6 +63,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
                   border: Border.all(color:Colors.white.withOpacity(0.5),)
               ),
             },
+            interface: NinjaInterface(),
             initialActiveOverlays: const <String>['mini_map'],
             lightingColorGame: Colors.black.withOpacity(0.5),
             // si no tenemos un objeto jugador el joystick moverá el mapa
@@ -100,6 +103,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
                 'blue_ninja':(properties) => BlueNinjaEnemy(position: properties.position ,spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
                 'fire':(properties)=>Fire(position:properties.position),
                 //'inmate':(properties) => Inmate(position:properties.position),
+                'void':(properties)=>VoidFall(position:properties.position),
               },
             )
         );

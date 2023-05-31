@@ -1,4 +1,6 @@
 // compendio de variables generales para acceder a items facilmente
+import 'dart:core';
+
 class Globals {
   Globals._();
 
@@ -55,4 +57,7 @@ class Globals {
   // Mapas
   static const String mapOne = 'map_one.json';
   static const String dungeon = 'dungeon.json';
+
+  //Elementos de UI
+  static const String uiHealth = 'ui/health_ui.png';
 }

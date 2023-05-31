@@ -11,9 +11,6 @@ class Inmate extends GameComponent with TapGesture {
   bool _observerd = false;
   late TextPaint _textPaint;
 
-  Inmate({required Vector2 position})
-      : super(position: position);
-
   @override
   void onTap() {
     // TODO: implement onTap

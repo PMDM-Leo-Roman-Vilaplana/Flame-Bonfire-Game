@@ -12,13 +12,21 @@ class Coin extends GameDecoration with Sensor<GreenNinjaPlayer>{
        super.withAnimation(animation: AnimationConfig.coinAnimation(), position: position, size: Vector2.all(Globals.smallItemSize));
 
   @override
-  void onContact(GameComponent component) {
+  void onContact(GameComponent collision) {
 
     // recupera vida en contacto con el botiquin
 
-    FlameAudio.play(Globals.successSound);
-    removeFromParent();
-    gameRef.pauseEngine();
-    gameRef.overlayManager.add(GameWonScreen.id);
+    if (collision is GreenNinjaPlayer) {
+
+      FlameAudio.play(Globals.successSound);
+      removeFromParent();
+      collision.medalObtained = true;
+      // una vez recogida la moneda, se mostrara en la ui.
+    }
+
+    // antes, recoger la medalla terminaba la partida
+    //gameRef.pauseEngine();
+    //gameRef.overlayManager.add(GameWonScreen.id);
+
   }
 }
