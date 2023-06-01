@@ -25,6 +25,7 @@ late Function(MapId) selectMap;
 
 
 class GreenNinjaGame extends StatefulWidget {
+  static bool useJoystick = true;
   const GreenNinjaGame({Key? key}) : super(key: key);
 
   @override
@@ -47,8 +48,42 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
     }
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    Joystick joystick =  Joystick(
+        directional: JoystickDirectional(),
+        actions:[
+          JoystickAction(actionId: AttackType.melee,
+            size: 80,
+            margin: EdgeInsets.only(bottom:50, right: 50),
+            align: JoystickActionAlign.BOTTOM_RIGHT,
+            sprite: Sprite.load(Globals.sword),
+          ),
+          JoystickAction(actionId: AttackType.range,
+            size: 50,
+            margin: EdgeInsets.only(bottom:50, right: 160),
+            align: JoystickActionAlign.BOTTOM_RIGHT,
+            sprite: Sprite.load(Globals.shurikenSingle),
+          )
+        ]
+    );
+
+    if(!GreenNinjaGame.useJoystick){
+      joystick = Joystick(
+        keyboardConfig: KeyboardConfig(
+          keyboardDirectionalType: KeyboardDirectionalType.wasdAndArrows,
+          acceptedKeys: [
+              LogicalKeyboardKey.space,
+              LogicalKeyboardKey.controlLeft,
+          ],
+        ),
+      );
+    }
+
     switch(currentMapId){
       default:
         return BonfireWidget(
@@ -70,30 +105,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
             player: GreenNinjaPlayer(
                 position: Vector2(80, 120),
                 spriteSheet: GreenNinjaSpriteSheet.spriteSheet),
-            joystick: Joystick(
-                directional: JoystickDirectional(),
-                keyboardConfig: KeyboardConfig(keyboardDirectionalType: KeyboardDirectionalType.wasdAndArrows,
-                  acceptedKeys: [
-                    LogicalKeyboardKey.space,
-                    LogicalKeyboardKey.controlLeft,
-                  ],
-                ),
-                actions:[
-                  JoystickAction(actionId: AttackType.melee,
-                    size: 80,
-                    margin: EdgeInsets.only(bottom:50, right: 50),
-                    align: JoystickActionAlign.BOTTOM_RIGHT,
-                    sprite: Sprite.load(Globals.sword),
-                  ),
-
-                  JoystickAction(actionId: AttackType.range,
-                    size: 50,
-                    margin: EdgeInsets.only(bottom:50, right: 160),
-                    align: JoystickActionAlign.BOTTOM_RIGHT,
-                    sprite: Sprite.load(Globals.shurikenSingle),
-                  )
-                ]
-            ),
+            joystick: joystick,
             map: WorldMapByTiled(Globals.dungeon,
               forceTileSize: Vector2(32, 32),
               objectsBuilder: {

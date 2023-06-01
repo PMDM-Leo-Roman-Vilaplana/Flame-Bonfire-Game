@@ -2,6 +2,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:tfg_flutter_game/constants/globals.dart';
 import 'package:tfg_flutter_game/game/the_green_ninja_game.dart';
+import 'package:tfg_flutter_game/screens/mainMenu.dart';
 import 'package:tfg_flutter_game/sprite_sheets/sprite_sheets.dart';
 
 void main() async {
@@ -33,6 +34,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const GreenNinjaGame());
+        home: const Menu());
   }
 }
