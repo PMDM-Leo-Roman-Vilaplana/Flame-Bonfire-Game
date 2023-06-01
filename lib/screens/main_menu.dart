@@ -59,7 +59,7 @@ class _MenuState extends State<Menu>{
           child: Column (
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text("Chingo Mototruco",
+              const Text("Prision Escape!",
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Normal',
@@ -111,7 +111,7 @@ class _MenuState extends State<Menu>{
               ),
               DefectorRadio<bool>(
                 value: false,
-                label: 'Keyboard',
+                label: 'Teclado',
                 group: GreenNinjaGame.useJoystick,
                 onChange: (value){
                   setState((){
@@ -124,7 +124,7 @@ class _MenuState extends State<Menu>{
               ),
               DefectorRadio<bool>(
                 value: true,
-                label: 'Joystick',
+                label: 'Móvil',
                 group: GreenNinjaGame.useJoystick,
                 onChange: (value){
                   setState((){
@@ -153,7 +153,7 @@ class _MenuState extends State<Menu>{
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               const Text(
-                "Desarrollado por "
+                "Desarrollado por"
               ),
               InkWell(
                 onTap: () {

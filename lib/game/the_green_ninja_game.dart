@@ -14,7 +14,9 @@ import 'package:tfg_flutter_game/sprite_sheets/sprite_sheets.dart';
 import '../NPC/inmate.dart';
 import '../NPC/old_man_npc.dart';
 import '../decorations/fire.dart';
+import '../hitboxes/exit_door.dart';
 import '../hitboxes/void.dart';
+import '../hitboxes/wall.dart';
 import '../interface/NinjaInterface.dart';
 import '../players/green_ninja_player.dart';
 import '../screens/victory_screen.dart';
@@ -22,7 +24,6 @@ import '../sprite_sheets/green_ninja_sprite_sheet.dart';
 
 MapId currentMapId = MapId.uno;
 late Function(MapId) selectMap;
-
 
 class GreenNinjaGame extends StatefulWidget {
   static bool useJoystick = true;
@@ -41,15 +42,14 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
   }
 
   @override
-  void initState(){
+  void initState() {
+    selectMap = (MapId id) {
+      setState(() {
+        currentMapId = id;
+      });
+    };
     super.initState();
-    selectMap(MapId id){
-      currentMapId = id;
-    }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +83,11 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
         ),
       );
     }
-
     switch(currentMapId){
       default:
         return BonfireWidget(
             key: Key(DateTime.now().toIso8601String()),
+            //showCollisionArea: true,
             overlayBuilderMap: {
               GameOverScreen.id:(context,game)=> const GameOverScreen(),
               GameWonScreen.id:(context,game)=> const GameWonScreen(),
@@ -103,7 +103,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
             lightingColorGame: Colors.black.withOpacity(0.5),
             // si no tenemos un objeto jugador el joystick moverá el mapa
             player: GreenNinjaPlayer(
-                position: Vector2(80, 120),
+                position: Vector2(100, 140),
                 spriteSheet: GreenNinjaSpriteSheet.spriteSheet),
             joystick: joystick,
             map: WorldMapByTiled(Globals.dungeon,
@@ -114,8 +114,10 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
                 'demon': (properties) => DemonEnemy(position: properties.position),
                 'blue_ninja':(properties) => BlueNinjaEnemy(position: properties.position ,spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
                 'fire':(properties)=>Fire(position:properties.position),
-                //'inmate':(properties) => Inmate(position:properties.position),
+                'inmate':(properties) => Inmate(position:properties.position, size: Globals.defaultTileSize, showcaseText: "Cositas"),
                 'void':(properties)=>VoidFall(position:properties.position),
+                'wall':(properties)=>Wall(position:properties.position),
+                'exit_door':(properties)=>ExitDoor(position:properties.position),
               },
             )
         );

@@ -11,7 +11,7 @@ class BlueNinjaEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLif
 
   // TODO: Ataque de los enemigos OWO
   bool _seePlayerToAttackMelee = false;
-  final double _damage = 20;
+  final double _damage = 15;
   bool _observed = false;
   BlueNinjaEnemy({required Vector2 position, required SpriteSheet spriteSheet})
       : super (
