@@ -18,7 +18,7 @@ class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, O
     position: position,
     size: Vector2(Globals.playerSize * 3, Globals.playerSize * 3),
     speed: 70,
-    life: 400,
+    life: 100,
     initDirection: Direction.down,
     animation:
     AnimationConfig.demonCyclopAnimation(),
