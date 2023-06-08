@@ -63,11 +63,10 @@ class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, O
                 animationRight: AnimationConfig.cutAnimation());
           }
         },
-        radiusVision: Globals.radiusVision,
+        radiusVision: Globals.radiusVision * 6,
         observed: (){
           if(!_observed) {
             _observed = true;
-            FlameAudio.bgm.stop();
             FlameAudio.bgm.play(Globals.musicBoss);
           }
         },

@@ -89,7 +89,6 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
     return BonfireWidget(
         
         key: Key(DateTime.now().toIso8601String()),
-        showCollisionArea: true,
         overlayBuilderMap: {
           GameOverScreen.id: (context, game) => const GameOverScreen(),
           GameWonScreen.id: (context, game) => const GameWonScreen(),
