@@ -1,5 +1,5 @@
 { "columns":4,
- "image":"..\/Documentos\/GitHub\/tfg_flutter_game\/assets\/images\/sprite_sheets\/old_man.png",
+ "image":"sprite_sheets\/old_man.png",
  "imageheight":112,
  "imagewidth":64,
  "margin":0,
