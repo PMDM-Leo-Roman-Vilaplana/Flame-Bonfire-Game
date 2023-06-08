@@ -57,6 +57,7 @@ class Globals {
   // Mapas
   static const String mapOne = 'map_one.json';
   static const String dungeon = 'dungeon.json';
+  static const String woods = 'woods.json';
 
   //Elementos de UI
   static const String uiHealth = 'ui/health_ui.png';

@@ -60,13 +60,13 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
         actions:[
           JoystickAction(actionId: AttackType.melee,
             size: 60,
-            margin: EdgeInsets.only(bottom:50, right: 50),
+            margin: const EdgeInsets.only(bottom:50, right: 50),
             align: JoystickActionAlign.BOTTOM_RIGHT,
             sprite: Sprite.load(Globals.uiMelee),
           ),
           JoystickAction(actionId: AttackType.range,
             size: 60,
-            margin: EdgeInsets.only(bottom:50, right: 160),
+            margin: const EdgeInsets.only(bottom:50, right: 160),
             align: JoystickActionAlign.BOTTOM_RIGHT,
             sprite: Sprite.load(Globals.uiRanged),
           )
@@ -95,7 +95,7 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
               'mini_map':(context,game) => MiniMap(
                   game:game,
                   size: Vector2(120,120),
-                  margin: EdgeInsets.all(20),
+                  margin: const EdgeInsets.all(20),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color:Colors.white.withOpacity(0.5),)
               ),
@@ -105,13 +105,16 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
             lightingColorGame: Colors.black.withOpacity(0.7),
             // si no tenemos un objeto jugador el joystick moverá el mapa
             player: GreenNinjaPlayer(
+                // mapa 1 posicion optima position: Vector2(600, 170),
+                // mapa 2 posicion optima (900,1500)
                 position: Vector2(600, 170),
                 spriteSheet: GreenNinjaSpriteSheet.spriteSheet),
             joystick: joystick,
-            map: WorldMapByTiled(Globals.dungeon,
+            map: WorldMapByTiled(Globals.woods,
               forceTileSize: Vector2(32, 32),
               objectsBuilder: {
-                'old_man': (properties) => OldManNpc(position: properties.position, spriteSheet: OldManSpriteSheet.spriteSheet),
+                'old_man1': (properties) => OldManNpc(position: properties.position, spriteSheet: OldManSpriteSheet.spriteSheet),
+                //'old_man2': (properties) =>OldManNpc2(position:properties.position, spriteSheet: OldManSpriteSheet.spriteSheet),
                 'dark_ninja': (properties) => DarkNinjaEnemy(position: properties.position, spriteSheet: DarkNinjaSpriteSheet.spriteSheet),
                 'demon': (properties) => DemonEnemy(position: properties.position),
                 'blue_ninja':(properties) => BlueNinjaEnemy(position: properties.position ,spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
@@ -120,6 +123,8 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
                 'inmate2': (properties) => Inmate2(position: properties.position, size:Globals.defaultTileSize, showcaseText: "Inmate2"),
                 'void':(properties)=>VoidFall(position:properties.position),
                 'wall':(properties)=>Wall(position:properties.position),
+                'collision':(properties)=>Wall(position:properties.position),
+                //'healing_herb':(properties)=>,
                 'exit_door':(properties)=>ExitDoor(position:properties.position),
               },
             )
