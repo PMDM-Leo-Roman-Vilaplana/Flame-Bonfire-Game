@@ -60,4 +60,6 @@ class Globals {
 
   //Elementos de UI
   static const String uiHealth = 'ui/health_ui.png';
+  static const String uiMelee = 'ui/joystick_atack.png';
+  static const String uiRanged = 'ui/joystick_atack_range.png';
 }

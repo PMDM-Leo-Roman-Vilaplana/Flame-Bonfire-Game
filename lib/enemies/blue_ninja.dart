@@ -18,7 +18,7 @@ class BlueNinjaEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLif
     position: position,
     size: Vector2(Globals.playerSize, Globals.playerSize),
     speed: 150,
-    life: 200,
+    life: 30,
     initDirection: Direction.down,
     animation:
     AnimationConfig.blueNinjaAnimation(spriteSheet: spriteSheet),

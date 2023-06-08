@@ -20,7 +20,7 @@ class VoidFall extends GameDecoration with Sensor  {
   void onContact(GameComponent component) {
 
     if (component is GreenNinjaPlayer){
-      component.position = Vector2(100,140);
+      component.position = Vector2(600, 170);
       component.showDamage(_damage);
       component.removeLife(_damage);
     }

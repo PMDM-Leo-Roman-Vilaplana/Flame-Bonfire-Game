@@ -13,10 +13,8 @@ import 'package:tfg_flutter_game/widgets/custom_radio.dart';
 class Menu extends StatefulWidget {
   const Menu({super.key});
 
-
   @override
   _MenuState createState() => _MenuState();
-
 }
 
 class _MenuState extends State<Menu>{
@@ -26,13 +24,11 @@ class _MenuState extends State<Menu>{
   late async.Timer _timer;
 
   List<SpriteAnimation?> sprites = [
-
     AnimationConfig.greenNinjaAnimation(spriteSheet: GreenNinjaSpriteSheet.spriteSheet).idleRight,
     AnimationConfig.oldManAnimation(spriteSheet: OldManSpriteSheet.spriteSheet).idleRight,
     AnimationConfig.darkNinjaAnimation(spriteSheet: DarkNinjaSpriteSheet.spriteSheet).idleRight,
     AnimationConfig.blueNinjaAnimation(spriteSheet: BlueNinjaSpriteSheet.spriteSheet).idleRight,
     AnimationConfig.demonCyclopAnimation().idleRight,
-
   ];
 
   @override
@@ -44,9 +40,8 @@ class _MenuState extends State<Menu>{
 
   @override
   Widget build(BuildContext context) {
-
     return AnimatedSwitcher(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       child: showSplash ? buildSplash() : buildMenu(),
     );
   }
@@ -78,7 +73,7 @@ class _MenuState extends State<Menu>{
                   ),
                 ),
               const SizedBox(
-                height:30,
+                height:30.0,
               ),
               SizedBox(
                 height: 150,
@@ -88,7 +83,7 @@ class _MenuState extends State<Menu>{
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
-                    minimumSize: Size(100,40),
+                    minimumSize: const Size(40,40),
                   ),
                   child: const Text(
                     "Juega ahora",
@@ -150,25 +145,52 @@ class _MenuState extends State<Menu>{
           height: 20,
           margin: const EdgeInsets.all(20.0),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              const Text(
-                "Desarrollado por"
-              ),
-              InkWell(
-                onTap: () {
-                  _launchURL("https://github.com/PMDM-Leo-Roman-Vilaplana/Flame-Bonfire-Game");
-                },
-                child: const Text(
-                  'Leo "leshrike" Roman',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: Colors.blue,
-                    fontFamily: 'Normal',
-                    fontSize: 12.0,
-                  ),
+              Flexible(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const Text(
+                      "Desarrollado por ",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Normal',
+                          fontSize: 12.0
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        _launchURL("https://github.com/PMDM-Leo-Roman-Vilaplana/Flame-Bonfire-Game");
+                      },
+                      child: const Text(
+                        'Leo "leshrike" Roman',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue,
+                          fontFamily: 'Normal',
+                          fontSize: 12.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              )
+              ),
+              Flexible(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const <Widget>[
+                     Text(
+                     "CIP FP Batoi 22-23",
+                     style: TextStyle(
+                       color: Colors.white,
+                       fontFamily: 'Normal',
+                       fontSize: 12.0,
+                     ),
+                    ),
+                  ],
+                )
+              ),
             ],
           ),
         ),
@@ -202,5 +224,4 @@ class _MenuState extends State<Menu>{
       await launchUrl(url as Uri);
     }
   }
-
 }
