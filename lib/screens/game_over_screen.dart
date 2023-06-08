@@ -11,7 +11,7 @@ class GameOverScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Material(
-        color: Colors.transparent.withOpacity(0.5),
+        color: Colors.transparent.withOpacity(0.8),
         child: Center(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [

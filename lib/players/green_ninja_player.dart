@@ -63,6 +63,7 @@ class GreenNinjaPlayer extends SimplePlayer with ObjectCollision, Lighting {
   @override
   void die() {
     FlameAudio.play(Globals.gameOverSound);
+    FlameAudio.bgm.play(Globals.musicDefeat);
     gameRef.camera.shake(intensity: 4);
     removeFromParent();
     super.die();

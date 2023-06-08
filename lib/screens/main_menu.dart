@@ -1,4 +1,5 @@
 import 'dart:async' as async;
+import 'package:flame_audio/flame_audio.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:tfg_flutter_game/game/the_green_ninja_game.dart';
 import 'package:tfg_flutter_game/constants/animation_config.dart';
@@ -9,6 +10,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:tfg_flutter_game/utils/custom_sprite_animation_widget.dart';
 import 'package:tfg_flutter_game/utils/audio_controller.dart';
 import 'package:tfg_flutter_game/widgets/custom_radio.dart';
+
+import '../constants/globals.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -47,6 +50,8 @@ class _MenuState extends State<Menu>{
   }
 
   Widget buildMenu(){
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play(Globals.musicMenu);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(

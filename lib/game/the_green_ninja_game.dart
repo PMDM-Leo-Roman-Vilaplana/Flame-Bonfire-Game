@@ -1,4 +1,5 @@
 import 'package:bonfire/bonfire.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/services.dart';
 import 'package:tfg_flutter_game/constants/globals.dart';
 import 'package:flutter/material.dart';
@@ -83,8 +84,10 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
         ),
       );
     }
-
+    FlameAudio.bgm.initialize();
+    currentMapId == MapId.uno ? FlameAudio.bgm.play(Globals.musicLvl1): FlameAudio.bgm.play(Globals.musicLvl2);
     return BonfireWidget(
+        
         key: Key(DateTime.now().toIso8601String()),
         showCollisionArea: true,
         overlayBuilderMap: {

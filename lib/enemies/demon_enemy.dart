@@ -16,9 +16,9 @@ class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, O
   DemonEnemy({required Vector2 position})
       : super (
     position: position,
-    size: Vector2(Globals.playerSize, Globals.playerSize),
-    speed: 150,
-    life: 100,
+    size: Vector2(Globals.playerSize * 3, Globals.playerSize * 3),
+    speed: 70,
+    life: 400,
     initDirection: Direction.down,
     animation:
     AnimationConfig.demonCyclopAnimation(),
@@ -38,6 +38,8 @@ class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, O
 
   @override
   void die(){
+    FlameAudio.bgm.stop();
+    FlameAudio.bgm.play(Globals.musicWin);
     gameRef.camera.shake(intensity: 4);
     removeFromParent();
     super.die();
@@ -65,6 +67,8 @@ class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, O
         observed: (){
           if(!_observed) {
             _observed = true;
+            FlameAudio.bgm.stop();
+            FlameAudio.bgm.play(Globals.musicBoss);
           }
         },
       );

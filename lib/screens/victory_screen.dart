@@ -8,14 +8,13 @@ class GameWonScreen extends StatelessWidget {
   const GameWonScreen ({Key? key}) : super(key: key);
 
   static const String id = 'victory';
-
   @override
   Widget build(BuildContext context) => Material(
-    color: Colors.transparent.withOpacity(0.5),
+    color: Colors.transparent.withOpacity(0.8),
     child: Center(
         child:
         Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text("GRAN ENEMIGO DERROTADO",
+          const Text("ENEMIGO DERROTADO",
               style: TextStyle(
                 color: Colors.green,
                 fontSize: 100,
