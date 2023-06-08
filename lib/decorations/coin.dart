@@ -23,10 +23,5 @@ class Coin extends GameDecoration with Sensor<GreenNinjaPlayer>{
       collision.medalObtained = true;
       // una vez recogida la moneda, se mostrara en la ui.
     }
-
-    // antes, recoger la medalla terminaba la partida
-    //gameRef.pauseEngine();
-    //gameRef.overlayManager.add(GameWonScreen.id);
-
   }
 }

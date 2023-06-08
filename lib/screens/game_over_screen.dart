@@ -15,7 +15,7 @@ class GameOverScreen extends StatelessWidget {
         child: Center(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text("Sorry,you lose",
+          const Text("HAS MUERTO",
               style: TextStyle(
                 color: Colors.red,
                 fontSize: 100,

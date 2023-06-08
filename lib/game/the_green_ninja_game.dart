@@ -14,7 +14,9 @@ import 'package:tfg_flutter_game/sprite_sheets/sprite_sheets.dart';
 import '../NPC/inmate.dart';
 import '../NPC/inmate2.dart';
 import '../NPC/old_man_npc.dart';
+import '../NPC/old_man_npc2.dart';
 import '../decorations/fire.dart';
+import '../decorations/healing_herb.dart';
 import '../hitboxes/exit_door.dart';
 import '../hitboxes/void.dart';
 import '../hitboxes/wall.dart';
@@ -35,9 +37,8 @@ class GreenNinjaGame extends StatefulWidget {
 }
 
 class _GreenNinjaGameState extends State<GreenNinjaGame> {
-
   @override
-  void dispose(){
+  void dispose() {
     currentMapId = MapId.uno;
     super.dispose();
   }
@@ -54,82 +55,92 @@ class _GreenNinjaGameState extends State<GreenNinjaGame> {
 
   @override
   Widget build(BuildContext context) {
+    Joystick joystick = Joystick(directional: JoystickDirectional(), actions: [
+      JoystickAction(
+        actionId: AttackType.melee,
+        size: 60,
+        margin: const EdgeInsets.only(bottom: 50, right: 50),
+        align: JoystickActionAlign.BOTTOM_RIGHT,
+        sprite: Sprite.load(Globals.uiMelee),
+      ),
+      JoystickAction(
+        actionId: AttackType.range,
+        size: 60,
+        margin: const EdgeInsets.only(bottom: 50, right: 160),
+        align: JoystickActionAlign.BOTTOM_RIGHT,
+        sprite: Sprite.load(Globals.uiRanged),
+      )
+    ]);
 
-    Joystick joystick =  Joystick(
-        directional: JoystickDirectional(),
-        actions:[
-          JoystickAction(actionId: AttackType.melee,
-            size: 60,
-            margin: const EdgeInsets.only(bottom:50, right: 50),
-            align: JoystickActionAlign.BOTTOM_RIGHT,
-            sprite: Sprite.load(Globals.uiMelee),
-          ),
-          JoystickAction(actionId: AttackType.range,
-            size: 60,
-            margin: const EdgeInsets.only(bottom:50, right: 160),
-            align: JoystickActionAlign.BOTTOM_RIGHT,
-            sprite: Sprite.load(Globals.uiRanged),
-          )
-        ]
-    );
-
-    if(!GreenNinjaGame.useJoystick){
+    if (!GreenNinjaGame.useJoystick) {
       joystick = Joystick(
         keyboardConfig: KeyboardConfig(
           keyboardDirectionalType: KeyboardDirectionalType.wasdAndArrows,
           acceptedKeys: [
-              LogicalKeyboardKey.space,
-              LogicalKeyboardKey.controlLeft,
+            LogicalKeyboardKey.space,
+            LogicalKeyboardKey.controlLeft,
           ],
         ),
       );
     }
-    switch(currentMapId){
-      default:
-        return BonfireWidget(
-            key: Key(DateTime.now().toIso8601String()),
-            showCollisionArea: true,
-            overlayBuilderMap: {
-              GameOverScreen.id:(context,game)=> const GameOverScreen(),
-              GameWonScreen.id:(context,game)=> const GameWonScreen(),
-              'mini_map':(context,game) => MiniMap(
-                  game:game,
-                  size: Vector2(120,120),
-                  margin: const EdgeInsets.all(20),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color:Colors.white.withOpacity(0.5),)
-              ),
-            },
-            interface: NinjaInterface(),
-            initialActiveOverlays: const <String>['mini_map'],
-            lightingColorGame: Colors.black.withOpacity(0.7),
-            // si no tenemos un objeto jugador el joystick moverá el mapa
-            player: GreenNinjaPlayer(
-                // mapa 1 posicion optima position: Vector2(600, 170),
-                // mapa 2 posicion optima (900,1500)
-                position: Vector2(600, 170),
-                spriteSheet: GreenNinjaSpriteSheet.spriteSheet),
-            joystick: joystick,
-            map: WorldMapByTiled(Globals.woods,
-              forceTileSize: Vector2(32, 32),
-              objectsBuilder: {
-                'old_man1': (properties) => OldManNpc(position: properties.position, spriteSheet: OldManSpriteSheet.spriteSheet),
-                //'old_man2': (properties) =>OldManNpc2(position:properties.position, spriteSheet: OldManSpriteSheet.spriteSheet),
-                'dark_ninja': (properties) => DarkNinjaEnemy(position: properties.position, spriteSheet: DarkNinjaSpriteSheet.spriteSheet),
-                'demon': (properties) => DemonEnemy(position: properties.position),
-                'blue_ninja':(properties) => BlueNinjaEnemy(position: properties.position ,spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
-                'fire':(properties)=>Fire(position:properties.position),
-                'inmate':(properties) => Inmate(position:properties.position, size: Globals.defaultTileSize, showcaseText: "Inmate"),
-                'inmate2': (properties) => Inmate2(position: properties.position, size:Globals.defaultTileSize, showcaseText: "Inmate2"),
-                'void':(properties)=>VoidFall(position:properties.position),
-                'wall':(properties)=>Wall(position:properties.position),
-                'collision':(properties)=>Wall(position:properties.position),
-                //'healing_herb':(properties)=>,
-                'exit_door':(properties)=>ExitDoor(position:properties.position),
-              },
-            )
-        );
-        break;
-    }
+
+    return BonfireWidget(
+        key: Key(DateTime.now().toIso8601String()),
+        showCollisionArea: true,
+        overlayBuilderMap: {
+          GameOverScreen.id: (context, game) => const GameOverScreen(),
+          GameWonScreen.id: (context, game) => const GameWonScreen(),
+          'mini_map': (context, game) => MiniMap(
+              game: game,
+              size: Vector2(120, 120),
+              margin: const EdgeInsets.all(20),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.5),
+              )),
+        },
+        interface: NinjaInterface(),
+        initialActiveOverlays: const <String>['mini_map'],
+        lightingColorGame: currentMapId == MapId.uno ? Colors.black.withOpacity(0.7) : Colors.black.withOpacity(0.3),
+        // si no tenemos un objeto jugador el joystick moverá el mapa
+        player: GreenNinjaPlayer(
+            // mapa 1 posicion optima position: Vector2(600, 170),
+            // mapa 2 posicion optima (900,1500)
+            position: currentMapId == MapId.uno ? Vector2(600,170) : Vector2(900,1500),
+            spriteSheet: GreenNinjaSpriteSheet.spriteSheet),
+        joystick: joystick,
+        map: WorldMapByTiled(
+          currentMapId == MapId.uno ? Globals.dungeon : Globals.woods,
+          forceTileSize: Vector2(32, 32),
+          objectsBuilder: {
+            'old_man1': (properties) => OldManNpc(
+                position: properties.position,
+                spriteSheet: OldManSpriteSheet.spriteSheet),
+            'old_man2': (properties) => OldManNpc2(
+                position: properties.position,
+                spriteSheet: OldManSpriteSheet.spriteSheet),
+            'dark_ninja': (properties) => DarkNinjaEnemy(
+                position: properties.position,
+                spriteSheet: DarkNinjaSpriteSheet.spriteSheet),
+            'demon': (properties) => DemonEnemy(position: properties.position),
+            'blue_ninja': (properties) => BlueNinjaEnemy(
+                position: properties.position,
+                spriteSheet: BlueNinjaSpriteSheet.spriteSheet),
+            'fire': (properties) => Fire(position: properties.position),
+            'inmate': (properties) => Inmate(
+                position: properties.position,
+                size: Globals.defaultTileSize,
+                showcaseText: "Inmate"),
+            'inmate2': (properties) => Inmate2(
+                position: properties.position,
+                size: Globals.defaultTileSize,
+                showcaseText: "Inmate2"),
+            'void': (properties) => VoidFall(position: properties.position),
+            'wall': (properties) => Wall(position: properties.position),
+            'collision': (properties) => Wall(position: properties.position),
+            'healing_herb':(properties)=> HealingHerb(position: properties.position),
+            'exit_door': (properties) => ExitDoor(position: properties.position),
+          },
+        ));
   }
 }

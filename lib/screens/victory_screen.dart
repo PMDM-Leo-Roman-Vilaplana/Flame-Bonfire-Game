@@ -15,7 +15,7 @@ class GameWonScreen extends StatelessWidget {
     child: Center(
         child:
         Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text("Enhorabuena, ganaste",
+          const Text("GRAN ENEMIGO DERROTADO",
               style: TextStyle(
                 color: Colors.green,
                 fontSize: 100,

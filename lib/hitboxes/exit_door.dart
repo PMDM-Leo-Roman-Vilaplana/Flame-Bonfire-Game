@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 
 import '../constants/animation_config.dart';
 import '../constants/globals.dart';
+import '../enums/map_id.dart';
+import '../game/the_green_ninja_game.dart';
 import '../players/green_ninja_player.dart';
 import '../screens/victory_screen.dart';
 import '../sprite_sheets/green_ninja_sprite_sheet.dart';
@@ -23,8 +25,8 @@ class ExitDoor extends SimpleNpc with Sensor<GreenNinjaPlayer> {
 
     if (component.medalObtained) {
       FlameAudio.play(Globals.successSound);
-      gameRef.pauseEngine();
-      gameRef.overlayManager.add(GameWonScreen.id);
+
+      selectMap(MapId.dos);
 
     } else {
         _escapeDialog();

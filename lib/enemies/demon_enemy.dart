@@ -5,6 +5,8 @@ import 'package:tfg_flutter_game/constants/globals.dart';
 import 'package:tfg_flutter_game/constants/animation_config.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:tfg_flutter_game/constants/collision_config.dart';
+
+import '../screens/victory_screen.dart';
 class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, ObjectCollision {
 
   // TODO: Ataque de los enemigos OWO
@@ -16,7 +18,7 @@ class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, O
     position: position,
     size: Vector2(Globals.playerSize, Globals.playerSize),
     speed: 150,
-    life: 50,
+    life: 100,
     initDirection: Direction.down,
     animation:
     AnimationConfig.demonCyclopAnimation(),
@@ -39,6 +41,9 @@ class DemonEnemy extends SimpleEnemy with AutomaticRandomMovement, UseBarLife, O
     gameRef.camera.shake(intensity: 4);
     removeFromParent();
     super.die();
+    FlameAudio.play(Globals.successSound);
+    gameRef.pauseEngine();
+    gameRef.overlayManager.add(GameWonScreen.id);
   }
 
   @override
