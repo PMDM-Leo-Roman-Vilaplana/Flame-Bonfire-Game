@@ -7,6 +7,11 @@ soplo de libertad nada mas salimos a los bosques que rodean la funesta prisión 
 Podremos tener una experiencia que nos transporta 20 años al pasado, sin comprometer nuestro día a día, permitiéndonos jugar en diversos dispositivos, partiendo desde móviles hasta navegadores y sistemas operativos como Linux o Windows.
 Esto es posible gracias a la posibilidad que nos proporciona Bonfire de tener esquemas de control diferentes en función del dispositivo en el que juguemos.
 
+# Guías de Despliegue / Ejecución y Documentación
+
+[Enlace Directo a la documentación](https://docs.google.com/document/d/1AtbXCBcGJ0oebv5txjVdQ9NHyt3srbUtMxFxFBUUAzA/edit?usp=sharing)
+[Enlace directo al manual de Ejecución]()
+
 # Vídeos del Juego en Ejecución
 
 **Video DEMO del juego en funcionamiento (en un navegador)** [aquí](https://www.youtube.com/watch?v=USLmxgHlwjE).
@@ -51,7 +56,7 @@ A continuación, voy a listar algunos de las herramientas utilizadas durante el 
 Software
 
 + Android Studio (IDE)
-+ Tiled (Creación de Mapas)
++ [Tiled (Creación de Mapas)] (https://www.mapeditor.org), [Tiled en Bonfire](https://bonfire-engine.github.io/#/tiled_support)
 + GIMP (Edicion de fotografías, tilesets..)
 + Notion (Organizacion)
 + GIT (Control de Versiones)
@@ -61,10 +66,11 @@ Lenguajes de programación y Librerías / Paquetes.
 
 + Flutter
 + Dart
-+ Flutter Flame
-+ Flame Audio
-+ Bonfire
-+ Async
++ [Flutter Flame](https://docs.flame-engine.org/latest/)
++ [Flame Audio](https://docs.flame-engine.org/1.1.1/flame_audio/audio.html)
++ [Bonfire](https://bonfire-engine.github.io/#/?id=welcome-to-bonfire)
++ [Forge 2D](https://pub.dev/packages/forge2d)
++ [Async](https://api.dart.dev/stable/3.0.2/dart-async/dart-async-library.html)
 
 ### ¿Porqué necesitamos un sistema de Stamina?
 
