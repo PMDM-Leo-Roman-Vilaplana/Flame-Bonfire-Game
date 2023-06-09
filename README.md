@@ -11,7 +11,7 @@ Esto es posible gracias a la posibilidad que nos proporciona Bonfire de tener es
 
 [Enlace Directo a la documentación](https://docs.google.com/document/d/1AtbXCBcGJ0oebv5txjVdQ9NHyt3srbUtMxFxFBUUAzA/edit?usp=sharing)
 
-[Enlace directo al manual de Ejecución]()
+[Enlace directo al manual de Ejecución](https://docs.google.com/document/d/15alqA-2_m0Qk3Eq8yyC9xJggkfM1hjevG23NaBcpfD0/edit?usp=sharing)
 
 # Vídeos del Juego en Ejecución
 
