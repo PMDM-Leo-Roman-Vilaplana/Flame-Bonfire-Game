@@ -17,7 +17,7 @@ Esto es posible gracias a la posibilidad que nos proporciona Bonfire de tener es
 
 **Video DEMO del juego en funcionamiento (en un navegador)** [aquí](https://www.youtube.com/watch?v=USLmxgHlwjE).
 
-**Video Explicativo de algunos sistemas del Juego** [aquí]().
+**Video Explicativo de algunos sistemas del Juego** [aquí](https://www.youtube.com/watch?v=OclB3b2pY04).
 
 # Muestra de la UI en Dispositivos Móviles
 
