@@ -13,7 +13,7 @@ Esto es posible gracias a la posibilidad que nos proporciona Bonfire de tener es
 
 **Video Explicativo de algunos sistemas del Juego** [aquí]().
 
-#Muestra de la UI en Dispositivos Móviles
+# Muestra de la UI en Dispositivos Móviles
 
 Aunque ambos videos de muestra del videojuego han sido realizados grabando el navegador, podremos ver la UI en dispositivos móviles en la siguiente imagen:
 
