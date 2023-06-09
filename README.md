@@ -103,8 +103,8 @@ Las ruinas de un antiguo templo han dado paso a una zona en la que la vegetacion
 Para seleccionar las canciones utilizadas, he teneido en cuenta la sensación que querría transmitir en cada una de las situaciones desde sosiego, una atmósfera asfixiante o el sentimiento de encontrarte con un enemigo que inflinje respeto y terror.
 
 - Menú principal: [Donkey Kong Country 2 - Welcome to Crocodile Isle](https://www.youtube.com/watch?v=n0onfHl7alU)
-- Nivel 1 Mazmorra: [SMT IV Apocalypse - Enemy of God](https://www.youtube.com/watch?v=b-uT-MHifKU)
-- Nivel 2 Templo Abandonado: [Dark Souls 2 - Majula](https://www.youtube.com/watch?v=SrHk3QkLd60)
+- Nivel 1 - Mazmorra: [SMT IV Apocalypse - Enemy of God](https://www.youtube.com/watch?v=b-uT-MHifKU)
+- Nivel 2 - Templo Abandonado: [Dark Souls 2 - Majula](https://www.youtube.com/watch?v=SrHk3QkLd60)
 - Combate contra el Demonio: [Dark Souls 3 - Vordt of the Boreal Valley](https://www.youtube.com/watch?v=eIpJmdxnP1E)
 - Pantalla de Victoria: [SMT IV Tokyo (Ocarina of time SoundFont)](https://www.youtube.com/watch?v=cdAz8k3jw2Q)
 - Pantallas de Derrota: [Pokémon - Symphony of Lugia](https://www.youtube.com/watch?v=HDjKqw8hh2I)
