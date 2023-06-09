@@ -7,9 +7,13 @@ soplo de libertad nada mas salimos a los bosques que rodean la funesta prisión 
 Podremos tener una experiencia que nos transporta 20 años al pasado, sin comprometer nuestro día a día, permitiéndonos jugar en diversos dispositivos, partiendo desde móviles hasta navegadores y sistemas operativos como Linux o Windows.
 Esto es posible gracias a la posibilidad que nos proporciona Bonfire de tener esquemas de control diferentes en función del dispositivo en el que juguemos.
 
+# Vídeos del Juego en Ejecución
+
 **Video DEMO del juego en funcionamiento (en un navegador)** [aquí](https://www.youtube.com/watch?v=USLmxgHlwjE).
 
 **Video Explicativo de algunos sistemas del Juego** [aquí]().
+
+#Muestra de la UI en Dispositivos Móviles
 
 Aunque ambos videos de muestra del videojuego han sido realizados grabando el navegador, podremos ver la UI en dispositivos móviles en la siguiente imagen:
 
