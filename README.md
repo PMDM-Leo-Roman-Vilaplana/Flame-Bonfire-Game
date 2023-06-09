@@ -1,4 +1,4 @@
-#  Dungeon Escape
+#  Dungeon Escape - un juego creado en Flutter
 
 Dungeon Escape es un videojuego desarrollado con Flutter, utilizando las librerías Flame y Bonfire, reminiscente de los videojuegos del género RPG de los años 90 y 2000.
 Nos pondremos en la piel de un héroe sin nombre con verdes ropajes cuyo objetivo es ser el más fuerte bajo el sol. Esta aventura nos mostrará una secuencia de escape de una mazmorra y nos dará un
