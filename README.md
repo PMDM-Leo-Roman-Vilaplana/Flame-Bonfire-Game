@@ -10,6 +10,7 @@ Esto es posible gracias a la posibilidad que nos proporciona Bonfire de tener es
 # Guías de Despliegue / Ejecución y Documentación
 
 [Enlace Directo a la documentación](https://docs.google.com/document/d/1AtbXCBcGJ0oebv5txjVdQ9NHyt3srbUtMxFxFBUUAzA/edit?usp=sharing)
+
 [Enlace directo al manual de Ejecución]()
 
 # Vídeos del Juego en Ejecución
