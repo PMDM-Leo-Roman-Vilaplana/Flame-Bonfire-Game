@@ -57,7 +57,7 @@ A continuación, voy a listar algunos de las herramientas utilizadas durante el 
 Software
 
 + Android Studio (IDE)
-+ [Tiled Creación de Mapas](https://www.mapeditor.org) (creacion de Mapas), [Tiled en Bonfire](https://bonfire-engine.github.io/#/tiled_support)
++ [Tiled](https://www.mapeditor.org) (creacion de Mapas), [Tiled en Bonfire](https://bonfire-engine.github.io/#/tiled_support)
 + GIMP (Edicion de fotografías, tilesets..)
 + Notion (Organizacion)
 + GIT (Control de Versiones)
