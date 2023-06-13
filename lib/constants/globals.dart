@@ -1,4 +1,6 @@
 // compendio de variables generales para acceder a items facilmente
+import 'dart:core';
+
 class Globals {
   Globals._();
 
@@ -54,4 +56,21 @@ class Globals {
 
   // Mapas
   static const String mapOne = 'map_one.json';
+  static const String dungeon = 'dungeon.json';
+  static const String woods = 'woods.json';
+
+  //Elementos de UI
+  static const String uiHealth = 'ui/health_ui.png';
+  static const String uiMelee = 'ui/joystick_atack.png';
+  static const String uiRanged = 'ui/joystick_atack_range.png';
+
+  //BGM
+  static const String musicMenu = 'bgm/welcome_to_crocodile_isle.mp3';
+  static const String musicLvl1 = 'bgm/enemy_of_god.mp3';
+  static const String musicLvl2 = 'bgm/majula.mp3';
+  static const String musicBoss = 'bgm/boss_theme.mp3';
+  static const String musicWin = 'bgm/luiga_theme.mp3';
+  static const String musicDefeat = 'bgm/smtIV_tokyo_ooc.mp3';
+
+
 }

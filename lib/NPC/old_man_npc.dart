@@ -61,13 +61,11 @@ class OldManNpc extends SimpleNpc with TapGesture, AutomaticRandomMovement {
   void _showDialogTalk() {
     gameRef.camera.moveToTargetAnimated(this, zoom: 2, finish: () {
       TalkDialog.show(gameRef.context, [
-        _speak(text: "Hey, what's up, are you lost?", isHero: false),
-        _speak(
-            text:
-                "Hello, old man, pleasure seeing you. Do you know where the coin is?",
-            isHero: true),
-        _speak(text: "Yes, the blue ninja has it!", isHero: false),
-        _speak(text: "Say less", isHero: true),
+        _speak(text:"Tienes que liberar el bosque. Pese a su estado parece tiranizado.", isHero: false),
+        _speak(text:"¿Como es eso posible? No hay signos de hostilidad y la naturaleza parece prospera, por no hablar de la nueva influencia mágica de la zona...", isHero: true),
+        _speak(text:"Hace unos años, una presencia demoníaca estableció este viejo templo como su territorio, mejorando la vida de los organismos vegetales de la zona.", isHero: false),
+        _speak(text:"A cambio, muchos habitantes hemos visto nuestros cuerpos envejecer, y muchos se han convertido en almas errantes.", isHero: false),
+        _speak(text:"Trataré de ver qué es lo que puedo hacer. Solo tengo que eliminar la presencia demoníaca, ¿No?", isHero: true),
       ], logicalKeyboardKeysToNext: [
         LogicalKeyboardKey.space,
         LogicalKeyboardKey.enter,

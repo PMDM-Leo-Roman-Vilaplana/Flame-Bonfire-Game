@@ -1,0 +1,14 @@
+{ "columns":36,
+ "image":"Tileset-Terrain2.png",
+ "imageheight":448,
+ "imagewidth":1152,
+ "margin":0,
+ "name":"terreno bosque tileset",
+ "spacing":0,
+ "tilecount":504,
+ "tiledversion":"1.10.1",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}
